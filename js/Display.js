@@ -33,23 +33,27 @@ class Display {
         this.valorActual = '';
         this.imprimirValores();
     }
+    
 
     agregarNumero(numero) {
         if(numero === '.' && this.valorActual.includes('.')) return
+        
         this.valorActual = this.valorActual.toString() + numero.toString();
         this.imprimirValores();
     }
 
     imprimirValores() {
-        this.displayValorActual.textContent = this.valorActual;
-        this.displayValorAnterior.textContent = `${this.valorAnterior} ${this.signos[this.tipoOperacion] || ''}`;
+        this.displayValorActual.textContent = formatter.format(this.valorActual);
+        this.displayValorAnterior.textContent = `${formatter.format(this.valorAnterior)} ${this.signos[this.tipoOperacion] || ''}`;
     }
 
     calcular() {
-        const valorAnterior = parseFloat(this.valorAnterior);
+        const valorAnterior = (parseFloat(this.valorAnterior));
         const valorActual = parseFloat(this.valorActual);
 
         if( isNaN(valorActual)  || isNaN(valorAnterior) ) return
         this.valorActual = this.calculador[this.tipoOperacion](valorAnterior, valorActual);
     }
 }
+
+const formatter = new Intl.NumberFormat('en');
