@@ -1,5 +1,8 @@
 body{
-    background-color: rgb(110, 110, 110);
+    background-image: linear-gradient(135deg, #c6cbcb, #8b8c90, #585859,
+    #4b4b5f, #5a4894, #1c246f, #371265);
+    background-size: 500%;
+    animation: animacion 10s infinite;
 }
 
 h1{
@@ -74,4 +77,18 @@ button:focus{
 
 .c{
     background-color: rgb(231, 102, 102);
+}
+
+@keyframes animacion {
+
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 50% 100%
+    }
+    100%{
+        background-position: 0% 50%
+    }
+    
 }
